@@ -5,7 +5,10 @@ const { ModuleFederationPlugin } = require('webpack').container
 module.exports = {
   entry: path.resolve(__dirname, '..', 'src/entry.tsx'),
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, '..', 'src'),
+    },
   },
   module: {
     rules: [
@@ -48,9 +51,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'wrapper',
       filename: 'remoteEntry.js',
-      remotes: {
-        cashier: 'cashier@http://localhost:4001/remoteEntry.js',
-      },
+      remotes: {},
       exposes: {},
       shared: {},
     }),

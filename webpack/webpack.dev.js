@@ -5,6 +5,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     port: 4000,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.DefinePlugin({

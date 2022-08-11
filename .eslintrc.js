@@ -22,6 +22,7 @@ module.exports = {
   ],
   rules: {
     'no-unused-vars': 'off',
+    'react/display-name': 'off',
     'import/no-unresolved': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-var-requires': 'off',
