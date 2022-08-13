@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import Loading from '@/components/Loading'
 import MainLogo from '@/components/vectors/MainLogo'
 import { APP_NAME, PAGE_LOGIN } from '@/utils/constants'
+// import { trpc } from '@/utils/trpc'
 
 const Login = () => {
+  // const hello = trpc.useQuery(['user.get'])
   useEffect(() => {
     document.title = `${APP_NAME} - ${PAGE_LOGIN}`
   }, [])
