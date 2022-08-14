@@ -17,6 +17,8 @@
     "@trpc/client": "^9.27.0",
     "@trpc/react": "^9.27.0",
     "@trpc/server": "^9.27.0",
+    "dotenv": "^16.0.1",
+    "dotenv-webpack": "^8.0.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -4,6 +4,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import Router from '@/routes'
 import { trpc } from '@/utils/trpc'
+import { apiUrl } from '@/config'
 
 const App = () => {
   const [queryClient] = useState(
@@ -18,7 +19,7 @@ const App = () => {
   )
   const [trpcClient] = useState(() =>
     trpc.createClient({
-      url: 'http://localhost:9000/trpc',
+      url: apiUrl,
       fetch: async (input, init?) => {
         const fetch = getFetch()
         return fetch(input, {

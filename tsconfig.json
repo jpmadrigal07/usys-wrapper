@@ -28,6 +28,7 @@
       "@/layouts/*": ["./layouts/*"],
       "@/utils/*": ["./utils/*"],
       "@/routes": ["./routes"],
+      "@/config": ["./config"],
     }
   },
   "include": ["src/**/*"],
