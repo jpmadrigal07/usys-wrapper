@@ -1,7 +1,7 @@
 import Loading from '@/components/Loading'
 import React, { Suspense, lazy } from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
-import Main from '@/layouts/Main'
+// import Main from '@/layouts/Main'
 
 const Loadable = (Component: React.ElementType) => (props) => {
   return (
@@ -28,8 +28,8 @@ export default function Router() {
       element: <Login />,
     },
     {
-      path: 'team',
-      element: <Main />,
+      path: '/menu',
+      element: <Menu />,
     },
     {
       path: '*',
@@ -39,3 +39,4 @@ export default function Router() {
 }
 
 const Login = Loadable(lazy(() => import('../pages/Login')))
+const Menu = Loadable(lazy(() => import('../pages/Menu')))

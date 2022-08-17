@@ -20,11 +20,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noImplicitAny": false,
+    "useUnknownInCatchVariables": false,
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["./components/*"],
       "@/pages/*": ["./pages/*"],
       "@/routes/*": ["./routes/*"],
+      "@/hooks/*": ["./hooks/*"],
       "@/layouts/*": ["./layouts/*"],
       "@/utils/*": ["./utils/*"],
       "@/routes": ["./routes"],

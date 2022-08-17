@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Router from '@/routes'
 import { trpc } from '@/utils/trpc'
 import { apiUrl } from '@/config'
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   const [queryClient] = useState(
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
+        <Toaster />
         <BrowserRouter>
           <Router />
         </BrowserRouter>

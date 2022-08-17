@@ -4,7 +4,7 @@ const dotenv = require('dotenv')
 
 dotenv.config({ path: path.join(__dirname, '../.env') })
 
-const { API_URL, PORT } = process.env
+const { API_URL, PORT, JWT_SIGN_KEY } = process.env
 
 module.exports = {
   mode: 'development',
@@ -16,7 +16,12 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       // Need to manually set all of the dotenv .env values here
-      process: { env: { API_URL: JSON.stringify(API_URL) } },
+      process: {
+        env: {
+          API_URL: JSON.stringify(API_URL),
+          JWT_SIGN_KEY: JSON.stringify(JWT_SIGN_KEY),
+        },
+      },
     }),
   ],
 }

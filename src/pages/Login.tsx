@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
+import { useState } from 'react'
 import Loading from '@/components/Loading'
 import MainLogo from '@/components/vectors/MainLogo'
 import { APP_NAME, PAGE_LOGIN } from '@/utils/constants'
-// import { trpc } from '@/utils/trpc'
+import useLogin from '@/hooks/useLogin'
 
 const Login = () => {
-  // const hello = trpc.useQuery(['user.get'])
-  useEffect(() => {
-    document.title = `${APP_NAME} - ${PAGE_LOGIN}`
-  }, [])
+  document.title = `${APP_NAME} - ${PAGE_LOGIN}`
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const { handleLogin, isLoading } = useLogin()
+
   return (
     <>
       <div className="w-screen h-screen bg-gray-50">
@@ -24,7 +25,13 @@ const Login = () => {
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-              <form className="space-y-6" action="#" method="POST">
+              <form
+                className="space-y-6"
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  handleLogin(email, password)
+                }}
+              >
                 <div>
                   <label
                     htmlFor="email"
@@ -38,6 +45,9 @@ const Login = () => {
                       name="email"
                       type="email"
                       autoComplete="email"
+                      defaultValue={email}
+                      disabled={isLoading}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
@@ -56,6 +66,9 @@ const Login = () => {
                       id="password"
                       name="password"
                       type="password"
+                      defaultValue={password}
+                      disabled={isLoading}
+                      onChange={(e) => setPassword(e.target.value)}
                       autoComplete="current-password"
                       required
                       className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -92,9 +105,10 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
+                    disabled={isLoading}
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    <Loading />
+                    {isLoading ? <Loading /> : 'Sign in'}
                   </button>
                 </div>
               </form>
