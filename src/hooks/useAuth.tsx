@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const useLogin = () => {
   const navigate = useNavigate()
-  const { mutate, isLoading } = trpc.useMutation(['auth.login'])
+  const { mutate, isLoading: isLoginLoading } = trpc.useMutation(['auth.login'])
   const handleLogin = (email: string, password: string) => {
     mutate(
       {
@@ -21,17 +21,18 @@ const useLogin = () => {
         },
         onError: (error) => {
           if (error.data?.zodError) {
-            showError(error.data?.zodError)
+            showError(error.data?.zodError, 'loginError')
           } else {
-            showError(error.message)
+            showError(error.message, 'loginError')
           }
         },
       }
     )
   }
+
   return {
     handleLogin,
-    isLoading,
+    isLoginLoading,
   }
 }
 

@@ -31,6 +31,7 @@
       "@/utils/*": ["./utils/*"],
       "@/routes": ["./routes"],
       "@/config": ["./config"],
+      "@/guards/*": ["./guards/*"],
     }
   },
   "include": ["src/**/*"],
